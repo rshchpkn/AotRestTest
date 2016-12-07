@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Restangular } from "../lib";
 export var HelloWorldComponent = (function () {
-    function HelloWorldComponent() {
+    function HelloWorldComponent(restangular) {
+        this.restangular = restangular;
+        debugger;
     }
     HelloWorldComponent.decorators = [
         { type: Component, args: [{
@@ -9,7 +12,9 @@ export var HelloWorldComponent = (function () {
                     styleUrls: ['hello-world.style.css']
                 },] },
     ];
-    HelloWorldComponent.ctorParameters = [];
+    HelloWorldComponent.ctorParameters = [
+        { type: Restangular, },
+    ];
     return HelloWorldComponent;
 }());
 //# sourceMappingURL=hello-world.component.js.map

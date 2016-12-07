@@ -14,14 +14,20 @@ import * as import5 from '@angular/core/src/metadata/view';
 import * as import6 from '@angular/core/src/linker/view_type';
 import * as import7 from '@angular/core/src/change_detection/change_detection';
 import * as import8 from '@angular/core/src/linker/component_factory';
-import * as import9 from './hello-world.style.css.shim';
+import * as import9 from '../lib/ng2-restangular';
+import * as import10 from './hello-world.style.css.shim';
+import * as import11 from '@angular/router/src/directives/router_outlet';
+import * as import12 from '@angular/core/src/linker/view_container';
+import * as import13 from '../../../node_modules/@angular/router/src/directives/router_outlet.ngfactory';
+import * as import14 from '@angular/router/src/router_outlet_map';
+import * as import15 from '@angular/core/src/linker/component_factory_resolver';
 export class Wrapper_HelloWorldComponent {
   /*private*/ _eventHandler:Function;
   context:import0.HelloWorldComponent;
   /*private*/ _changed:boolean;
-  constructor() {
+  constructor(p0:any) {
     this._changed = false;
-    this.context = new import0.HelloWorldComponent();
+    this.context = new import0.HelloWorldComponent(p0);
   }
   ngOnDetach(view:import1.AppView<any>,componentView:import1.AppView<any>,el:any):void {
   }
@@ -54,7 +60,7 @@ class View_HelloWorldComponent_Host0 extends import1.DebugAppView<any> {
   createInternal(rootSelector:string):import8.ComponentRef<any> {
     this._el_0 = import4.selectOrCreateRenderHostElement(this.renderer,'hello-world-app',import4.EMPTY_INLINE_ARRAY,rootSelector,this.debug(0,0,0));
     this.compView_0 = new View_HelloWorldComponent0(this.viewUtils,this,0,this._el_0);
-    this._HelloWorldComponent_0_3 = new Wrapper_HelloWorldComponent();
+    this._HelloWorldComponent_0_3 = new Wrapper_HelloWorldComponent(this.injectorGet(import9.Restangular,this.parentIndex));
     this.compView_0.create(this._HelloWorldComponent_0_3.context);
     this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [this._el_0]),(null as any));
     return new import8.ComponentRef_<any>(0,this,this._el_0,this._HelloWorldComponent_0_3.context);
@@ -76,18 +82,24 @@ class View_HelloWorldComponent_Host0 extends import1.DebugAppView<any> {
   }
 }
 export const HelloWorldComponentNgFactory:import8.ComponentFactory<import0.HelloWorldComponent> = new import8.ComponentFactory<import0.HelloWorldComponent>('hello-world-app',View_HelloWorldComponent_Host0,import0.HelloWorldComponent);
-const styles_HelloWorldComponent:any[] = [import9.styles];
+const styles_HelloWorldComponent:any[] = [import10.styles];
 const nodeDebugInfos_HelloWorldComponent0:import2.StaticNodeDebugInfo[] = [
   new import2.StaticNodeDebugInfo(([] as any[]),(null as any),{}),
   new import2.StaticNodeDebugInfo(([] as any[]),(null as any),{}),
+  new import2.StaticNodeDebugInfo(([] as any[]),(null as any),{}),
+  new import2.StaticNodeDebugInfo([import11.RouterOutlet],(null as any),{}),
   new import2.StaticNodeDebugInfo(([] as any[]),(null as any),{})
 ]
 ;
-var renderType_HelloWorldComponent:import3.RenderComponentType = import4.createRenderComponentType('/home/blacksonic/workspace/ng2-aot/src/app/components/hello-world.template.html',0,import5.ViewEncapsulation.Emulated,styles_HelloWorldComponent,{});
+var renderType_HelloWorldComponent:import3.RenderComponentType = import4.createRenderComponentType('/home/anton/Projects/angular2-aot-webpack/src/app/components/hello-world.template.html',0,import5.ViewEncapsulation.Emulated,styles_HelloWorldComponent,{});
 export class View_HelloWorldComponent0 extends import1.DebugAppView<import0.HelloWorldComponent> {
   _el_0:any;
   _text_1:any;
   _text_2:any;
+  _el_3:any;
+  /*private*/ _vc_3:import12.ViewContainer;
+  _RouterOutlet_3_5:import13.Wrapper_RouterOutlet;
+  _text_4:any;
   constructor(viewUtils:import4.ViewUtils,parentView:import1.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_HelloWorldComponent0,renderType_HelloWorldComponent,import6.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import7.ChangeDetectorStatus.CheckAlways,nodeDebugInfos_HelloWorldComponent0);
   }
@@ -96,12 +108,31 @@ export class View_HelloWorldComponent0 extends import1.DebugAppView<import0.Hell
     this._el_0 = import4.createRenderElement(this.renderer,parentRenderNode,'h1',import4.EMPTY_INLINE_ARRAY,this.debug(0,0,0));
     this._text_1 = this.renderer.createText(this._el_0,'Hello World!',this.debug(1,0,4));
     this._text_2 = this.renderer.createText(parentRenderNode,'\n',this.debug(2,0,21));
+    this._el_3 = import4.createRenderElement(this.renderer,parentRenderNode,'router-outlet',import4.EMPTY_INLINE_ARRAY,this.debug(3,1,0));
+    this._vc_3 = new import12.ViewContainer(3,(null as any),this,this._el_3);
+    this._RouterOutlet_3_5 = new import13.Wrapper_RouterOutlet(this.parentView.injectorGet(import14.RouterOutletMap,this.parentIndex),this._vc_3.vcRef,this.parentView.injectorGet(import15.ComponentFactoryResolver,this.parentIndex),(null as any));
+    this._text_4 = this.renderer.createText(parentRenderNode,'\n',this.debug(4,1,31));
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
       this._el_0,
       this._text_1,
-      this._text_2
+      this._text_2,
+      this._el_3,
+      this._text_4
     ]
     ),(null as any));
     return (null as any);
+  }
+  injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
+    if (((token === import11.RouterOutlet) && (3 === requestNodeIndex))) { return this._RouterOutlet_3_5.context; }
+    return notFoundResult;
+  }
+  detectChangesInternal(throwOnChange:boolean):void {
+    this.debug(3,1,0);
+    this._RouterOutlet_3_5.ngDoCheck(this,this._el_3,throwOnChange);
+    this._vc_3.detectChangesInNestedViews(throwOnChange);
+  }
+  destroyInternal():void {
+    this._vc_3.destroyNestedViews();
+    this._RouterOutlet_3_5.ngOnDestroy();
   }
 }

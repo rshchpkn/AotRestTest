@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":1,"metadata":{"routes":[{"path":"landing","component":{"__symbolic":"reference","module":"../components/hello-world.component","name":"HelloWorldComponent"}},{"path":"","redirectTo":"/landing","pathMatch":"full"}]}}
