@@ -18,17 +18,13 @@ export var RestangularModule = (function () {
             throw new Error('RestangularModule is already loaded. Import it in the AppModule only');
         }
     }
-    RestangularModule.forRoot = function () {
-        var config = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            config[_i - 0] = arguments[_i];
-        }
+    RestangularModule.forRoot = function (configOne, configTwo) {
         return {
             ngModule: RestangularModule,
             providers: [
                 HttpModule,
                 RestangularHttp,
-                { provide: RESTANGULAR2, useValue: config },
+                { provide: RESTANGULAR2, useValue: [configOne, configTwo] },
                 { provide: RESTANGULAR, useFactory: RestangularFactory, deps: [RESTANGULAR2] }
             ]
         };

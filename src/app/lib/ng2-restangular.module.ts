@@ -52,18 +52,14 @@ export class RestangularModule {
     }
   }
   
-  static forRoot(...config): ModuleWithProviders {
-
-
-    // let RestangularFactory3 = new RestangularFactory2()
-
+  static forRoot(configOne?, configTwo?): ModuleWithProviders {
     return {
       ngModule: RestangularModule,
       providers: [
         HttpModule,
         RestangularHttp,
         // Restangular
-        {provide: RESTANGULAR2, useValue: config},
+        {provide: RESTANGULAR2, useValue: [configOne, configTwo]},
         {provide: RESTANGULAR, useFactory: RestangularFactory, deps: [RESTANGULAR2]}
       ]
     };

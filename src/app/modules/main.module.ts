@@ -21,7 +21,7 @@ export function test (RestangularProvider) {
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    RestangularModule.forRoot([Http],test)
+    RestangularModule.forRoot()
   ],
   providers: [MockBackend]
 })

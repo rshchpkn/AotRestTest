@@ -7,24 +7,29 @@ import {MockBackend} from "@angular/http/testing";
 
 
 export const RESTANGULAR = new OpaqueToken('restangularWithConfig');
-export function RestangularFactory(...config) {
+export function RestangularFactory(config) {
   // return () => {
-    let configObj = {
-      fn: config[0],
-      arrServices: [],
-    };
+  console.log(config);
+  debugger;
 
-    if(_.isArray(config[0])){
-      configObj = {
-        arrServices: config[0],
-        fn: config[1]
-      }
+  let configObj = {
+    fn: config[0],
+    arrServices: [],
+  };
+
+  if (_.isArray(config[0])) {
+    debugger;
+    configObj = {
+      arrServices: config[0],
+      fn: config[1]
     }
+    debugger;
+  }
 
   debugger;
 
   return configObj;
-  // };
+
 }
 // export function RestangularFactoryTest(http: MockBackend) {
 //

@@ -1,20 +1,20 @@
 import { OpaqueToken } from "@angular/core";
 import * as _ from 'lodash';
 export var RESTANGULAR = new OpaqueToken('restangularWithConfig');
-export function RestangularFactory() {
-    var config = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        config[_i - 0] = arguments[_i];
-    }
+export function RestangularFactory(config) {
+    console.log(config);
+    debugger;
     var configObj = {
         fn: config[0],
         arrServices: [],
     };
     if (_.isArray(config[0])) {
+        debugger;
         configObj = {
             arrServices: config[0],
             fn: config[1]
         };
+        debugger;
     }
     debugger;
     return configObj;
